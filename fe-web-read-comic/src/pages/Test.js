@@ -16,7 +16,7 @@ const validationSchema = yup.object({
 
 const initialValues = {
   email: "",
-  password: "",
+  password: true,
 };
 
 export default function Test() {
@@ -29,9 +29,9 @@ export default function Test() {
   });
 
   const options = [
-    { key: '1', title: '1' },
-    { key: '2', title: '2' },
-    { key: '3', title: '3' },
+    { key: "1", title: "1" },
+    { key: "2", title: "2" },
+    { key: "3", title: "3" },
   ];
 
   return (
@@ -42,11 +42,10 @@ export default function Test() {
             <Controls.Input name="email" label="Email" formik={formik} />
           </Grid>
           <Grid item xs={6}>
-            <Controls.Select
+            <Controls.Checkbox
               name="password"
               label="Password"
               formik={formik}
-              options={options}
             />
           </Grid>
           <Grid item xs={12}>
