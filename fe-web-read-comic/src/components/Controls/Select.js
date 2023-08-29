@@ -15,20 +15,23 @@ const inputStyles = {
 };
 
 export default function Select(props) {
-  const { name, label, formik, options, ...other } = props;
+  const { name, label, formik, options, multiple, ...other } = props;
   return (
     <TextField
       id={name}
       label={label}
       name={name}
-      value={formik.values[name]}
-      onChange={formik.handleChange}
       error={formik.touched[name] && Boolean(formik.errors[name])}
       helperText={formik.touched[name] && formik.errors[name]}
       {...other}
       sx={inputStyles}
       fullWidth
       select
+      SelectProps={{
+        multiple: !!multiple,
+        value: formik.values[name],
+        onChange: formik.handleChange,
+      }}
     >
       {options.map((item) => {
         return (
