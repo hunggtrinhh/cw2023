@@ -12,11 +12,13 @@ const validationSchema = yup.object({
     .string("Enter your password")
     .min(8, "Password should be of minimum 8 characters length")
     .required("Password is required"),
+  radioGroup: yup.string(),
 });
 
 const initialValues = {
   email: "",
   password: true,
+  radioGroup: "1",
 };
 
 export default function Test() {
@@ -34,6 +36,12 @@ export default function Test() {
     { key: "3", title: "3" },
   ];
 
+  const radioOptions = [
+    { key: "1", title: "1" },
+    { key: "2", title: "2" },
+    { key: "3", title: "3" },
+  ];
+
   return (
     <Box>
       <form onSubmit={formik.handleSubmit} onReset={formik.handleReset}>
@@ -46,6 +54,14 @@ export default function Test() {
               name="password"
               label="Password"
               formik={formik}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <Controls.RadioGroup
+              name="radioGroup"
+              label="Password"
+              formik={formik}
+              options={radioOptions}
             />
           </Grid>
           <Grid item xs={12}>
