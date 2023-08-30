@@ -13,12 +13,14 @@ const validationSchema = yup.object({
     .min(8, "Password should be of minimum 8 characters length")
     .required("Password is required"),
   radioGroup: yup.string(),
+  date: yup.date(),
 });
 
 const initialValues = {
   email: "",
-  password: true,
+  password: "",
   radioGroup: "1",
+  date: null,
 };
 
 export default function Test() {
@@ -50,11 +52,7 @@ export default function Test() {
             <Controls.Input name="email" label="Email" formik={formik} />
           </Grid>
           <Grid item xs={6}>
-            <Controls.Checkbox
-              name="password"
-              label="Password"
-              formik={formik}
-            />
+            <Controls.Input name="password" label="Password" formik={formik} />
           </Grid>
           <Grid item xs={6}>
             <Controls.RadioGroup
@@ -62,6 +60,14 @@ export default function Test() {
               label="Password"
               formik={formik}
               options={radioOptions}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <Controls.DatePicker
+              datetime
+              name="date"
+              label="Date Time"
+              formik={formik}
             />
           </Grid>
           <Grid item xs={12}>
