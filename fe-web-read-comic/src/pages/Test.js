@@ -2,6 +2,7 @@ import { Box, Grid } from "@mui/material";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import Controls from "../components/Controls/Controls";
+import Header from "../layouts/Header";
 
 const validationSchema = yup.object({
   email: yup
@@ -46,6 +47,7 @@ export default function Test() {
 
   return (
     <Box>
+      <Header />
       <form onSubmit={formik.handleSubmit} onReset={formik.handleReset}>
         <Grid container spacing={1} sx={{ p: 1 }}>
           <Grid item xs={6}>

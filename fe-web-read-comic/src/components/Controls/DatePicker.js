@@ -1,7 +1,6 @@
-import { TextField, createTheme } from "@mui/material";
+import { Grid, createTheme } from "@mui/material";
 import {
   DateTimePicker,
-  LocalizationProvider,
   DatePicker as MuiDatePicker,
 } from "@mui/x-date-pickers";
 
@@ -25,26 +24,28 @@ const inputStyles = {
 export default function DatePicker(props) {
   const { name, label, formik, datetime, ...other } = props;
   return datetime ? (
-    <DateTimePicker
-      id={name}
-      label={label}
-      name={name}
-      value={formik.values[name]}
-      onChange={(value) => {
-        formik.setFieldValue(name, value, false);
-      }}
-      sx={inputStyles}
-    />
+    <Grid sx={inputStyles}>
+      <DateTimePicker
+        id={name}
+        label={label}
+        name={name}
+        value={formik.values[name]}
+        onChange={(value) => {
+          formik.setFieldValue(name, value, false);
+        }}
+      />
+    </Grid>
   ) : (
-    <MuiDatePicker
-      id={name}
-      label={label}
-      name={name}
-      value={formik.values[name]}
-      onChange={(value) => {
-        formik.setFieldValue(name, value, false);
-      }}
-      // inputRef={() => <TextField fullWidth />}
-    />
+    <Grid sx={inputStyles}>
+      <MuiDatePicker
+        id={name}
+        label={label}
+        name={name}
+        value={formik.values[name]}
+        onChange={(value) => {
+          formik.setFieldValue(name, value, false);
+        }}
+      />
+    </Grid>
   );
 }
